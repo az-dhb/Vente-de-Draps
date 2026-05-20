@@ -5,12 +5,12 @@ import { getFirestore, collection, getDocs, addDoc, serverTimestamp } from "fire
 import React, { useEffect, useState } from "react";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC0RudSPDw47_gh7127Jn4z6FX-slbitzM",
-  authDomain: "lidra-c49b7.firebaseapp.com",
-  projectId: "lidra-c49b7",
-  storageBucket: "lidra-c49b7.firebasestorage.app",
-  messagingSenderId: "251589029215",
-  appId: "1:251589029215:web:3e9100188e1393cfbe5aea"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -44,6 +44,8 @@ const DEFAULT_FRAIS = 500; // DA — fallback si wilaya absente de Firestore
 // ==========================================
 // 1. NAVBAR
 // ==========================================
+console.log("Project ID:", process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID)
+
 function Navbar({ cartCount, onCartOpen }) {
   return (
     <nav className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
